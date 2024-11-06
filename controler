@@ -1,0 +1,38 @@
+import joblib
+
+
+# TODO: now, argpass is acting like "a controler"
+class Controller():
+    pass
+
+args = parser.parse_args()
+
+def save_model(model, model_name):
+    """
+    Save any model using
+    """
+    with open(f"{model_name}.joblib", "wb") as file:
+        joblib.dump(model, file)
+
+def load_model(model_name):
+    """
+    Load any model saved
+    """
+    with open(f"{model_name}.joblib", "rb") as file:
+        model = joblib.load(file)
+    return model
+
+    
+if __name__ == "__main__":
+
+    if args.save_model:
+        save_model(model, args.name_model)
+
+    function_apply = operations.get(args.operation)
+    if function_apply:
+        if args.operation == "train":
+            function_apply(train_kwargs, test_kwargs, args)
+        elif args.operation == "predict":
+            function_apply(args.model_name, args)
+    else:
+        print("This operation is not available; choices ['train','predict'] (Esta operação não está disponível)")
