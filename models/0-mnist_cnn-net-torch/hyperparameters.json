@@ -1,30 +1,198 @@
 {
-    "train": {
-        "batch_size": {"text": "Tamanho do batch", "value": 64, "Help": "Tamanho do batch"},
-        "epochs": 10,
-        "learning_rate": 0.001,
-        "momentum": 0.9,
-        "weight_decay": 0.0001,
-        "num_workers": 4,
-        "pin_memory": true
+    "setting": {
+        "name": {
+            "text": "Nome do modelo",
+            "value": "",
+            "Help": "Identificação do modelo. Pode ser usado para salvar checkpoints ou registros.",
+            "default": "meu_modelo",
+            "type": "string",
+            "required": true
+        },
+
+        "architecture": {
+            "text": "Arquitetura do modelo",
+            "value": "",
+            "Help": "A arquitetura da rede neural, como ResNet, VGG, ou qualquer modelo personalizado.",
+            "default": "",
+            "type": "string",
+            "required": true
+        },
+        "tipo": {
+            "text": "Tipo do modelo",
+            "value": "",
+            "Help": "Define o tipo de tarefa do modelo",
+            "default": "",
+            "type": "string",
+            "required": true
+        }
     },
 
+    "train": {
+        
+        "batch_size": {
+            "text": "Tamanho do batch",
+            "Help": "Tamanho do batch utilizado durante o treinamento. Valores maiores podem acelerar o treinamento, mas exigem mais memória.",
+            "default": 32,
+            "range": {
+                "min": 1,
+                "max": 512
+            },
+            "type": "integer",
+            "required": true
+        },
+
+        "epochs": {
+            "text": "Número de épocas",
+            "Help": "Quantidade de vezes que o conjunto de treinamento será iterado.",
+            "default": 10,
+            "range": {
+                "min": 1,
+                "max": 1000
+            },
+            "type": "integer",
+            "required": true
+        },
+
+        "learning_rate": {
+            "text": "Taxa de aprendizado",
+            "Help": "Controla o quão rápido o modelo ajusta os pesos durante o treinamento.",
+            "default": 0.001,
+            "range": {
+                "min": 0.000001,
+                "max": 1.0
+            },
+            "type": "float",
+            "required": true
+        },
+
+        "momentum": {
+            "text": "Momento",
+            "default": 0.9,
+            "Help": "Fator que acelera o treinamento em direção ao mínimo global e reduz oscilações.",
+            "range": {
+                "min": 0.0,
+                "max": 1.0
+            },
+            "type": "float",
+            "required": false
+        },
+
+        "weight_decay": {
+            "text": "Decaimento de peso",
+            "Help": "Regularização L2 para evitar overfitting.",
+            "default": 0.0001,
+            "range": {
+                "min": 0.0,
+                "max": 0.1
+            },
+            "type": "float",
+            "required": false
+        },
+
+        "num_workers": {
+            "text": "Número de processos de carregamento",
+            "Help": "Número de threads para carregar os dados.",
+            "default": 4,
+            "range": {
+                "min": 0,
+                "max": 16
+            },
+            "type": "integer",
+            "required": true
+
+        },
+        "pin_memory": {
+            "text": "Fixar memória",
+            "Help": "Se ativado, otimiza o uso da memória ao mover tensores para a GPU.",
+            "default": true,
+            "type": "boolean",
+            "required": false
+        }
+
+    },
     "test": {
-        "batch_size": 64,
-        "num_workers": 4,
-        "pin_memory": true
+        "batch_size": {
+            "text": "Tamanho do batch",
+            "Help": "Tamanho do batch para avaliação. Deve ser otimizado para memória disponível.",
+            "default": 64,
+            "range": {
+                "min": 1,
+                "max": 512
+            },
+            "type": "integer",
+            "required": true
+        },
+
+        "num_workers": {
+            "text": "Número de processos de carregamento",
+            "Help": "Número de threads para carregar os dados na fase de teste.",
+            "default": 4,
+            "range": {
+                "min": 0,
+                "max": 16
+            },
+            "type": "integer",
+            "required": true
+        },
+
+        "pin_memory": {
+            "text": "Fixar memória",
+            "Help": "Se ativado, otimiza o uso da memória ao mover tensores para a GPU na fase de teste.",
+            "default": true,
+            "type": "boolean",
+            "required": false
+        }
     },
 
     "predict": {
-        "batch_size": 64,
-        "num_workers": 4,
-        "pin_memory": true
-    },
+        "batch_size": {
+            "text": "Tamanho do batch",
+            "Help": "Tamanho do batch para a previsão. Ajuste conforme necessário para memória.",
+            "default": 64,
+            "range": {
+                "min": 1,
+                "max": 512
+            },
+            "type": "integer",
+            "required": true
+        },
     
+        "num_workers": {
+            "text": "Número de processos de carregamento",
+            "Help": "Número de threads para carregar os dados na fase de previsão.",
+            "default": 4,
+            "range": {
+                "min": 0,
+                "max": 16
+            },
+            "type": "integer",
+            "required": true
+        },
+
+        "pin_memory": {
+            "text": "Fixar memória",
+            "Help": "Se ativado, otimiza o uso da memória ao mover tensores para a GPU na fase de previsão.",
+            "default": true,
+            "type": "boolean",
+            "required": false
+        }
+    },
+
     "dataset": {
-        "num_classes": 10,
-        "input_size": 32,
-        "input_channels": 3,
-        "path": "data/cifar10"
+
+        "format": {
+            "text": "Formato da entrada de dados",
+            "Help": "Formato da entrada de dados, como por exemplo xlxs ou csv, ou outro formato personalizado.",
+            "default": "csv",
+            "required": true
+        },
+
+        "path": {
+            "text": "Caminho do conjunto de dados",
+            "Help": "Local onde o conjunto de dados está armazenado para upload.",
+            "default": "",
+            "type": "string",
+            "required": true
+        }
     }
 }

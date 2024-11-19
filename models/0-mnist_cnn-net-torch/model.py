@@ -84,5 +84,3 @@ class Model(BaseModel):
                 predictions.extend(pred.cpu().numpy())
 
         return predictions
-    
-    ## TODO: data transformations?
