@@ -1,6 +1,6 @@
 from pathlib import Path
 
-class ProjectModel():
+class Project():
     
     def __init__(self, name = None, description = None, model=None):
         '''

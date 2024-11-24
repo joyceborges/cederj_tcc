@@ -1,14 +1,12 @@
-import argparse
-
-from model import ProjectModel
+from project_model import ProjectModel
 from view import ProjectView
 from project_controller import ProjectController
 
     
 def main():
-    model = ProjectModel()
+    prj = ProjectModel()
     view = ProjectView()
-    ctrl = ProjectController(model, view)
+    ctrl = ProjectController()
 
     while True:
         try:
@@ -32,6 +30,19 @@ def main():
 
                 if all([name, math_model, description]):
                     ctrl.manage_project_creation(name, description, math_model)
+                    ### O projeto é criado como uma nova pasta no diretório 'projects' com o nome do projeto.
+                    ### Como eu ligo um projeto a um modelo matemático?
+                    ### O modelo deve ser um pickle ou similar que foi treinado para este projeto e ...
+                    ### ... deverá entar ter salvo as informações de treinamento e teste que foram realizados? Como? Json tb?
+                    
+                    ### TODO:
+                    # CRIAR PASTA, QUE REPRESENTA O PROJETO NO DIRETÓRIO 'projects'
+                    # COPIAR OS HYPERPARAMETROS DO MODELO MATEMATICO PARA O PROJETO
+                    # DEFINIR BASE DE DADOS PARA O PROJETO 
+                    # sabemos que nao tem modelo treinado que pq pasta train está vazia (obs: logs de acuracia do modelo)
+                    # na pasta de teste:
+                          # 
+                
                 else:
                     print("Nome e Modelos Matemático não podem estar vazios. Por favor, preencha estes campos.")
             elif choice == 4:
