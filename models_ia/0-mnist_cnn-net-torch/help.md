@@ -1,5 +1,0 @@
-- explicar o modelo
-- explicar o hyperparameters
-- explicar o dataset - externos e internos
-    - explicar os formatos que ele precisa ter
-- explicar métricas do modelo

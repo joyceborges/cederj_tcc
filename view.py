@@ -4,17 +4,7 @@ class ProjectView():
         pass
 
     @staticmethod
-    def display_menu():
-        """
-        Displays the menu options to the user.
-        """
-        print("\n====== MVP MODELOS ======")
-        print("1. Listar todos os projetos")
-        print("2. Abrir um projeto já existente")
-        print("3. Criar um novo projeto")
-        print("4. Treinar um modelo")
-        print("5. Sair")
-        print("=============================")
+    
 
     @staticmethod
     def get_user_choice_menu():
