@@ -28,7 +28,6 @@
     },
 
     "train": {
-        
         "batch_size": {
             "text": "Tamanho do batch",
             "Help": "Tamanho do batch utilizado durante o treinamento. Valores maiores podem acelerar o treinamento, mas exigem mais memória.",

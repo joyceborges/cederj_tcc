@@ -2,23 +2,27 @@ from pathlib import Path
 
 class Project():
     
-    def __init__(self, name = None, description = None, model=None):
-        '''
-        Initializes a new instance of the Project class.
-        
-        Parameters:
+    def __init__(self, name = None, project_path= None, description = None, model=None, name_model=None):
+        '''    
+        Inicializa uma nova instância da classe Project.
+
+        Parâmetros:
         -----------
         name : str
-            The name of the project.
-        
+            O nome do projeto.
+
         description : str
-            A brief description of the project's purpose, objectives, or details.
-        
-        model : int
-            An index representing the selected model configuration, including custom hyperparameters
-            and other custom settings (e.g., CPU allocation, specific parameters).
-        
+            Uma breve descrição do projeto
+
+        model : Model
+            Uma instância da classe Model, representando o modelo a ser utilizado 
+            com suas configurações específicas.
+
+        model_name : str
+            O nome do modelo a ser utilizado
         '''
-        self.name = name  # nome do projeto
-        self.description = description  # descrição do projeto
-        self.model = model #### modelo
+
+        self.name = name
+        self.project_path = project_path
+        self.description = description
+        self.model = model

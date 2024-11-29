@@ -1,11 +1,10 @@
-import argparse
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
-from models.base_model import BaseModel
+from models_ia.base_model import BaseModel
 
 class Net(nn.Module):
     def __init__(self):
@@ -84,3 +83,6 @@ class Model(BaseModel):
                 predictions.extend(pred.cpu().numpy())
 
         return predictions
+
+if __name__ == '__main__':
+    print('Modelo de rede neural convolucional para classificação de dígitos manuscritos.')
